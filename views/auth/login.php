@@ -32,7 +32,10 @@ ob_end_flush(); // Flush the buffer and send output
 ?>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
-
+<head>
+  <!-- Add your header content here (meta tags, title, etc.) -->
+  <?php include('../../includes/header-login-page.php'); ?>
+</head>
 <body>
   <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme position-fixed w-100 shadow-sm z-index-0 px-3 px-md-5" id="layout-navbar">
     <div class="container">
@@ -135,12 +138,12 @@ ob_end_flush(); // Flush the buffer and send output
       <!-- /Login -->
     </div>
   </div>
+  <!-- Include your scripts here -->
+  <?php include('../../includes/scripts-login-page.php'); ?>
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
 </body>
-<?php include('../../includes/scripts-login-page.php'); ?>
-<script>
-  if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
-  }
-</script>
-
 </html>

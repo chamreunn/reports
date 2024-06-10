@@ -1,5 +1,5 @@
 <?php
-include('translate.php');
+include('../../includes/translate.php');
 
 // Redirect to index page if the user is not authenticated
 if (!isset($_SESSION['userid'])) {

@@ -177,8 +177,8 @@ if ($insertedData) {
   // Iterate through each headline and add it to the document
   foreach ($headlines as $index => $headline) {
     // Clean and decode the headline and data
-    $cleanHeadline = html_entity_decode(strip_tags(trim($headline)));
-    $cleanData = isset($data[$index]) ? html_entity_decode(strip_tags(trim($data[$index]))) : '';
+    $cleanHeadline = preg_replace('/^(&nbsp;|\s)+/', '', htmlspecialchars_decode($headline));
+    $cleanData = isset($data[$index]) ? preg_replace('/^(&nbsp;|\s)+/', '', html_entity_decode(strip_tags(trim($data[$index])))) : '';
 
     // Add the headline as a heading (level 1) with Khmer MEF2 font and justified alignment
     $contentSection->addTitle($cleanHeadline, 1); // Use addTitle method for headings

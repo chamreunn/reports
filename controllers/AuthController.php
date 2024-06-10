@@ -65,28 +65,28 @@ class AuthController
                                 if (isset($roleToDashboard[$role])) {
                                     header('Location: ' . $roleToDashboard[$role]); // Redirect to appropriate dashboard
                                 } else {
-                                    header('Location: /test/Leaves/views/user/dashboard.php'); // Redirect to default user dashboard
+                                    header('Location: ../views/user/dashboard.php'); // Redirect to default user dashboard
                                 }
                                 exit;
                             }
                         } else {
                             $_SESSION['error'] = 'ឈ្មោះមន្ត្រី ឬ ពាក្យសម្ងាត់ មិនត្រឹមត្រូវ'; // Store error message in session
-                            header('Location: /test/Leaves/views/auth/login.php'); // Redirect to login page
+                            header('Location: ../views/auth/login.php'); // Redirect to login page
                             exit;
                         }
                     } else {
                         $_SESSION['error'] = 'ឈ្មោះមន្ត្រី ឬ ពាក្យសម្ងាត់ មិនត្រឹមត្រូវ'; // Store error message in session
-                        header('Location: /test/Leaves/views/auth/login.php'); // Redirect to login page
+                        header('Location: ../views/auth/login.php'); // Redirect to login page
                         exit;
                     }
                 } else {
                     $_SESSION['error'] = 'សូមបញ្ចូលឈ្មោះមន្ត្រី និង ពាក្យសម្ងាត់'; // Store error message in session
-                    header('Location: /test/Leaves/views/auth/login.php'); // Redirect to login page
+                    header('Location: ../views/auth/login.php'); // Redirect to login page
                     exit;
                 }
             } else {
                 $_SESSION['error'] = "ប្រភេទការចូលមិនត្រឹមត្រូវ"; // Store error message in session
-                header('Location: /test/Leaves/views/auth/login.php'); // Redirect to login page
+                header('Location: ../views/auth/login.php'); // Redirect to login page
                 exit;
             }
         } else {

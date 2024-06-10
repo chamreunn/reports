@@ -7,7 +7,7 @@ if (!isset($_SESSION['userid'])) {
   exit();
 }
 // Include the admin functions file
-include '../../pages/admin/fuctions.php';
+include 'fuctions.php';
 
 $userId = $_SESSION['userid'];
 $notifications = getNotifications($userId);

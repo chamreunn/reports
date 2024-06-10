@@ -1,5 +1,5 @@
 <?php
-include('../../includes/translate.php');
+include('translate.php');
 
 // Redirect to index page if the user is not authenticated
 if (!isset($_SESSION['userid'])) {
@@ -22,7 +22,8 @@ $stmtUser->bindParam(':userId', $userId, PDO::PARAM_INT);
 $stmtUser->execute();
 $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
-
+$userLanguage = $user['languages']; // Get user's language preference
+$default_language = "kh";
 
 // Define language options
 $languages = array(

@@ -1,6 +1,6 @@
 <?php
 // include('../../config/dbconn.php');
-include('../../includes/translate.php');
+include('../includes/translate.php');
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

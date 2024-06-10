@@ -22,4 +22,3 @@ if (!function_exists('translate')) {
     return isset($translations[$text]) ? $translations[$text] : $text;
   }
 }
-?>

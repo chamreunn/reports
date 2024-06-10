@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
 <?php
+session_start(); // Start session at the beginning of the script
+ob_start(); // Start output buffering to prevent premature output
+
 $pageTitle = "ចូលប្រើប្រាស់ប្រព័ន្ធ";
-// session_start();
 include('../../includes/header-login-page.php');
-// include('../../includes/alert.php');
 include('../../config/dbconn.php');
+
 try {
   // Retrieve existing data if available
   $sql = "SELECT * FROM tblsystemsettings";
@@ -22,13 +22,16 @@ try {
   } else {
     // If no data available, set default values
     $system_name = "";
-    $icon_path = "assets/img/avatars/no-image.jpg";
-    $cover_path = "assets/img/pages/profile-banner.png";
+    $icon_path = "../../assets/img/avatars/no-image.jpg";
+    $cover_path = "../../assets/img/pages/profile-banner.png";
   }
 } catch (PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }
+ob_end_flush(); // Flush the buffer and send output
 ?>
+<!DOCTYPE html>
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
 
 <body>
   <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme position-fixed w-100 shadow-sm z-index-0 px-3 px-md-5" id="layout-navbar">
@@ -91,11 +94,7 @@ try {
             </a>
           </div>
           <form id="formAuthentication" class="mb-3" method="POST" action="../../controllers/AuthController.php">
-            <?php
-            if (session_status() == PHP_SESSION_NONE) {
-              session_start();
-            }
-            if (isset($_SESSION['error'])) : ?>
+            <?php if (isset($_SESSION['error'])) : ?>
               <div class="alert alert-danger alert-dismissible" role="alert">
                 <?= htmlspecialchars($_SESSION['error']) ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

@@ -22,8 +22,7 @@ $stmtUser->bindParam(':userId', $userId, PDO::PARAM_INT);
 $stmtUser->execute();
 $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
-$userLanguage = $user['languages']; // Get user's language preference
-$default_language = "kh";
+
 
 // Define language options
 $languages = array(

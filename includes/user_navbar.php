@@ -1,4 +1,8 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+include '../../config/dbconn.php';
 include('translate.php');
 
 // Redirect to index page if the user is not authenticated
@@ -6,12 +10,12 @@ if (!isset($_SESSION['userid'])) {
   header('Location: ../index.php');
   exit();
 }
+
 // Include the admin functions file
 include 'fuctions.php';
 
 $userId = $_SESSION['userid'];
 $notifications = getNotifications($userId);
-
 
 // Fetch user-specific data from the database
 $sqlUser = "SELECT u.*, r.RoleName FROM tbluser u
@@ -22,7 +26,8 @@ $stmtUser->bindParam(':userId', $userId, PDO::PARAM_INT);
 $stmtUser->execute();
 $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
-$userLanguage = $user['languages']; // Get user's language preference
+// Check if user data includes 'languages' key
+$userLanguage = isset($user['languages']) ? $user['languages'] : 'kh'; // Default to 'kh' if not set
 $default_language = "kh";
 
 // Define language options
@@ -30,23 +35,28 @@ $languages = array(
   'kh' => translate('ភាសាខ្មែរ'),
   'en' => translate('English')
 );
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST['language']) && array_key_exists($_POST['language'], $languages)) {
     $selectedLanguage = $_POST['language'];
 
     // Update the user's language preference in the database
-    $updateLanguageSql = "UPDATE tbluser SET languages = :language WHERE id = :userId";
-    $stmtUpdateLanguage = $dbh->prepare($updateLanguageSql);
-    $stmtUpdateLanguage->bindParam(':language', $selectedLanguage);
-    $stmtUpdateLanguage->bindParam(':userId', $userId, PDO::PARAM_INT);
-    $stmtUpdateLanguage->execute();
+    try {
+      $updateLanguageSql = "UPDATE tbluser SET languages = :language WHERE id = :userId";
+      $stmtUpdateLanguage = $dbh->prepare($updateLanguageSql);
+      $stmtUpdateLanguage->bindParam(':language', $selectedLanguage);
+      $stmtUpdateLanguage->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $stmtUpdateLanguage->execute();
 
-    // Update the session variable to reflect the updated language immediately
-    $_SESSION['user_language'] = $selectedLanguage;
+      // Update the session variable to reflect the updated language immediately
+      $_SESSION['user_language'] = $selectedLanguage;
 
-    // Set a success message
-    sleep(1);
-    $msg = urlencode(translate("Languages have been successfully updated"));
+      // Set a success message
+      sleep(1);
+      $msg = urlencode(translate("Languages have been successfully updated"));
+    } catch (PDOException $e) {
+      die("Database error: " . $e->getMessage());
+    }
   } else {
     // Set an error message
     sleep(1);
@@ -55,14 +65,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Fetch notification count for the current user
-$sqlNotifications = "SELECT COUNT(*) AS notification_count
-                     FROM tblrequest
-                     WHERE user_id = :userId AND status = 'approved'";
-$stmtNotifications = $dbh->prepare($sqlNotifications);
-$stmtNotifications->bindParam(':userId', $userId, PDO::PARAM_INT);
-$stmtNotifications->execute();
-$notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_count'];
+try {
+  $sqlNotifications = "SELECT COUNT(*) AS notification_count
+                       FROM tblrequest
+                       WHERE user_id = :userId AND status = 'approved'";
+  $stmtNotifications = $dbh->prepare($sqlNotifications);
+  $stmtNotifications->bindParam(':userId', $userId, PDO::PARAM_INT);
+  $stmtNotifications->execute();
+  $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_count'];
+} catch (PDOException $e) {
+  die("Database error: " . $e->getMessage());
+}
 ?>
+
 <?php include('alert.php'); ?>
 <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
   <div class="container-xxl">
@@ -77,7 +92,6 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
         <i class="bx bx-chevron-left bx-sm align-middle"></i>
       </a>
     </div>
-
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
       <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
         <i class="bx bx-menu bx-sm"></i>
@@ -89,7 +103,7 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
         <!-- Language Selector -->
         <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
           <form id="language-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="dropdown-toggle hide-arrow">
-            <input type="hidden" name="language" id="selected-language" value="<?php echo $userLanguage; ?>">
+            <input type="hidden" name="language" id="selected-language" value="<?php echo isset($userLanguage) ? $userLanguage : $default_language; ?>">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
               <i class="bx bx-globe bx-sm"></i>
             </a>
@@ -97,13 +111,14 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
             <ul class="dropdown-menu dropdown-menu-end">
               <?php foreach ($languages as $langCode => $langName) : ?>
                 <li>
-                  <button type="submit" name="language" value="<?php echo $langCode; ?>" class="dropdown-item language-option <?php echo ($userLanguage == $langCode) ? 'active' : ''; ?>">
+                  <button type="submit" name="language" value="<?php echo $langCode; ?>" class="dropdown-item language-option <?php echo (isset($userLanguage) && $userLanguage == $langCode) ? 'active' : ''; ?>">
                     <span class="align-middle"><?php echo $langName; ?></span>
                   </button>
                 </li>
               <?php endforeach; ?>
             </ul>
           </form>
+
         </li>
         <!-- /Language Selector -->
 
@@ -166,165 +181,54 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
         <audio id="notification-sound" src="../../assets/notification/sound/notification.mp3" preload="auto"></audio>
         <script>
           document.addEventListener('DOMContentLoaded', function() {
-            let userInteracted = false;
-            const notificationSound = new Audio('../../assets/notification/sound/notification.mp3');
-            let previousUnreadCount = 0;
-
-            // Listen for user interaction
-            function handleUserInteraction() {
-              userInteracted = true;
-              document.removeEventListener('click', handleUserInteraction);
-              document.removeEventListener('keydown', handleUserInteraction);
-            }
-
-            document.addEventListener('click', handleUserInteraction);
-            document.addEventListener('keydown', handleUserInteraction);
-
-            // Request permission for browser notifications
-            function requestNotificationPermission() {
-              if (Notification.permission !== 'granted') {
-                Notification.requestPermission().then(permission => {
-                  if (permission === 'granted') {
-                    console.log('Notification permission granted');
-                  }
-                });
-              }
-            }
-
-            // Check if the browser supports notifications
-            function checkNotificationSupport() {
-              if (!('Notification' in window)) {
-                console.log('This browser does not support desktop notification');
-              } else {
-                requestNotificationPermission();
-              }
-            }
-
-            function fetchNotifications() {
-              fetch('../../includes/fetch_user_notifications.php')
-                .then(response => {
-                  if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                  }
-                  return response.json();
-                })
+            // Check if the badge element is present
+            var notificationBadge = document.getElementById('notification-count');
+            if (notificationBadge) {
+              // Fetch notification count from the server
+              fetch('../ajax/notification_count.php')
+                .then(response => response.json())
                 .then(data => {
-                  console.log('Fetched data:', data); // Log fetched data
-                  if (userInteracted && data.unread_count > previousUnreadCount) {
-                    notificationSound.play();
-                    if (Notification.permission === 'granted') {
-                      const notification = new Notification('New Notification', {
-                        body: 'You have new notifications',
-                        icon: '../../assets/notification/icon/notification-alert.svg'
-                      });
-                      notification.onclick = function() {
-                        // Handle notification click event
-                        window.focus(); // Focus the window when the notification is clicked
-                      };
-                    }
-                  }
-                  previousUnreadCount = data.unread_count; // Update the previous unread count
-                  // Update the count badge
-                  const notificationBadgeWrapper = document.getElementById('notification-badge-wrapper');
-                  if (data.unread_count > 0) {
-                    notificationBadgeWrapper.innerHTML = `
-                <span class="badge bg-danger rounded-pill badge-notifications" id="notification-count">${data.unread_count}</span>
-            `;
+                  var count = data.notification_count;
+                  // Update the badge with the notification count
+                  notificationBadge.textContent = count;
+                  // Show/hide badge based on the notification count
+                  if (count > 0) {
+                    notificationBadge.style.display = 'inline-block'; // Show the badge
+                    playNotificationSound(); // Play the notification sound
                   } else {
-                    notificationBadgeWrapper.innerHTML = ''; // Remove the badge
+                    notificationBadge.style.display = 'none'; // Hide the badge
                   }
-                  // Update the notification list as well
-                  updateNotificationList(data.notifications);
                 })
-                .catch(error => console.error('Error fetching notifications:', error));
-            }
-
-            function updateNotificationList(notifications) {
-              const notificationList = document.getElementById('notification-list');
-              notificationList.innerHTML = '';
-              console.log('Updating notification list...'); // Log when updating the list
-
-              if (notifications.length === 0) {
-                const noNotifications = document.createElement('div');
-                noNotifications.className = 'text-center my-5';
-                noNotifications.innerHTML = `
-        <i class='bx bx-bell-off' style='font-size: 50px; color: #ccc;'></i>
-        <p class='mt-3 mb-0 text-muted'>No Notifications</p>
-    `;
-                notificationList.appendChild(noNotifications);
-              } else {
-                notifications.forEach(notification => {
-                  console.log('Notification:', notification); // Log each notification
-                  // Check status to decide on UI
-                  const statusClass = notification.status === 'approved' ? 'text-success' : 'text-danger';
-                  const statusIcon = notification.status === 'approved' ? 'bx-check-circle' : 'bx-x-circle';
-
-                  const listItem = document.createElement('li');
-                  listItem.className = `list-group-item list-group-item-action dropdown-notifications-item ${notification.is_read == 1 ? 'mark-as-read' : ''}`;
-                  listItem.innerHTML = `
-        <a href="view_notification.php?id=${notification.id}" class="text-decoration-none d-flex justify-content-between text-reset">
-            <div class="d-flex">
-                <div class="flex-shrink-0 me-3">
-                    <div class="avatar">
-                        <img src="${notification.approver_profile}" alt="" class="w-px-40 rounded-circle" style="object-fit: cover">
-                    </div>
-                </div>
-                <div class="flex-grow-1">
-                    <p class="mb-0 ${statusClass}"><strong>${notification.approver_honorific} ${notification.approver_firstname} ${notification.approver_lastname}</strong> ${notification.message}</p>
-                    <small class="text-muted">${notification.created_at}</small>
-                </div>
-                <div class="flex-shrink-0 dropdown-notifications-actions">
-                    <a href="javascript:void(0)" class="dropdown-notifications-read">
-                        <span class="badge badge-dot ${notification.is_read == 1 ? 'bg-secondary' : 'bg-primary'}"></span>
-                    </a>
-                    <a href="javascript:void(0)" class="dropdown-notifications-archive">
-                        <span class = "${statusIcon} ${statusClass}"></span>
-                </a>
-            </div>
-        </div>
-    </a>
-    `;
-                  notificationList.appendChild(listItem);
+                .catch(error => {
+                  console.error('Error fetching notification count:', error);
                 });
-              }
-              console.log('Notification list updated.'); // Log after updating the list
             }
-
-            // Check for notification support and request permission
-            checkNotificationSupport();
-            // Fetch notifications initially and then every 30 seconds
-            fetchNotifications();
-            setInterval(fetchNotifications, 30000); // Set interval to 30 seconds
           });
-        </script>
 
-        <!-- User Profile Dropdown -->
+          function playNotificationSound() {
+            var sound = document.getElementById('notification-sound');
+            sound.play();
+          }
+        </script>
+        <!-- User Profile -->
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
           <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-            <div class="d-flex">
-              <div class="flex-shrink-0">
-                <div class="avatar avatar-online">
-                  <img src="<?php echo (!empty($user['Profile'])) ? htmlentities($user['Profile']) : '../../assets/img/avatars/no-image.jpg'; ?>" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-                </div>
-              </div>
-              <div class="flex-grow-1 mx-2 d-none d-md-block">
-                <span class="fw-medium d-block"><?php echo htmlentities($user['Honorific']) . " " . htmlentities($user['FirstName']) . " " . htmlentities($user['LastName']); ?></span>
-                <small class="text-muted"><?php echo htmlentities($user['RoleName']); ?></small>
-              </div>
+            <div class="avatar avatar-online">
+              <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
             </div>
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="pages-account-settings-account.html">
+              <a class="dropdown-item" href="#">
                 <div class="d-flex">
                   <div class="flex-shrink-0 me-3">
                     <div class="avatar avatar-online">
-                      <img src="<?php echo (!empty($user['Profile'])) ? htmlentities($user['Profile']) : '../../assets/img/avatars/no-image.jpg'; ?>" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                      <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle">
                     </div>
                   </div>
                   <div class="flex-grow-1">
-                    <span class="fw-medium d-block"><?php echo htmlentities($user['Honorific']) . " " . htmlentities($user['FirstName']) . " " . htmlentities($user['LastName']); ?></span>
-                    <small class="text-muted"><?php echo htmlentities($user['RoleName']); ?></small>
+                    <span class="fw-semibold d-block"><?php echo $user['username']; ?></span>
+                    <small class="text-muted"><?php echo $user['RoleName']; ?></small>
                   </div>
                 </div>
               </a>
@@ -333,29 +237,38 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
               <div class="dropdown-divider"></div>
             </li>
             <li>
-              <a class="dropdown-item" href="pages-profile-user.php?uid=<?php echo $_SESSION['userid']; ?>">
+              <a class="dropdown-item" href="../Account/profile.php">
                 <i class="bx bx-user me-2"></i>
-                <span class="align-middle"><?php echo translate('My Account'); ?></span>
+                <span class="align-middle"><?php echo translate('My Profile'); ?></span>
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="pages-account-settings-account.php">
+              <a class="dropdown-item" href="#">
                 <i class="bx bx-cog me-2"></i>
                 <span class="align-middle"><?php echo translate('Settings'); ?></span>
               </a>
             </li>
             <li>
+              <a class="dropdown-item" href="#">
+                <span class="d-flex align-items-center align-middle">
+                  <i class="bx bx-credit-card me-2"></i>
+                  <span class="flex-grow-1 align-middle"><?php echo translate('Billing'); ?></span>
+                  <span class="badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                </span>
+              </a>
+            </li>
+            <li>
               <div class="dropdown-divider"></div>
             </li>
             <li>
-              <a class="dropdown-item" href="../../includes/logout.php">
+              <a class="dropdown-item" href="../logout.php">
                 <i class="bx bx-power-off me-2"></i>
-                <span class="align-middle"><?php echo translate('Logout'); ?></span>
+                <span class="align-middle"><?php echo translate('Log Out'); ?></span>
               </a>
             </li>
           </ul>
         </li>
-        <!-- /User Profile Dropdown -->
+        <!--/ User Profile -->
       </ul>
     </div>
   </div>

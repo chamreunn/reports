@@ -1,4 +1,4 @@
-<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template">
+<html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
 
 <head>
   <meta charset="utf-8">
@@ -16,7 +16,7 @@
   <script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-5DDHKGP"></script>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,34 +24,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
 
   <!-- Icons -->
-  <link rel="stylesheet" href="assets/vendor/fonts/boxicons.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/fontawesome.css">
-  <link rel="stylesheet" href="assets/vendor/fonts/flag-icons.css">
+  <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css">
+  <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css">
+  <link rel="stylesheet" href="../../assets/vendor/fonts/flag-icons.css">
 
   <!-- Core CSS -->
 
 
-  <link rel="stylesheet" href="assets/css/demo.css">
+  <link rel="stylesheet" href="../../assets/css/demo.css">
 
   <!-- Vendors CSS -->
-  <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
-  <link rel="stylesheet" href="assets/vendor/libs/typeahead-js/typeahead.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+  <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
 
 
   <!-- Page CSS -->
   <!-- Page -->
-  <link rel="stylesheet" href="assets/vendor/css/pages/page-misc.css">
+  <link rel="stylesheet" href="../../assets/vendor/css/pages/page-misc.css">
 
   <!-- Helpers -->
-  <script src="assets/vendor/js/helpers.js"></script>
+  <script src="../../assets/vendor/js/helpers.js"></script>
 
   <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-  <script src="assets/vendor/js/template-customizer.js"></script>
+  <script src="../../assets/vendor/js/template-customizer.js"></script>
 
   <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-  <script src="assets/js/config.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/vendor/css/rtl/core.css" class="template-customizer-core-css">
-  <link rel="stylesheet" type="text/css" href="assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css">
+  <script src="../../assets/js/config.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../assets/vendor/css/rtl/core.css" class="template-customizer-core-css">
+  <link rel="stylesheet" type="text/css" href="../../assets/vendor/css/rtl/theme-default.css" class="template-customizer-theme-css">
 
 </head>
 
@@ -63,21 +63,21 @@
         ដោយសារតែមានការខុសច្រើនដងទៅលើការបំពេញលេខកូដចូលប្រព័ន្ធដូច្នេះគណនីរបស់អ្នកនិងត្រូវបានផ្អាកជាបណ្តោះអាសន្ន
       </p>
       <p class="fw-bolder text-primary mb-3">សូមទំនាក់ទំនងទៅកាន់អេដមីនដើម្បីដំណើរការឡើងវិញ។</p>
-      <a href="index.php" class="btn btn-primary">ត្រឡប់ទៅកាន់ទំព៍រដើម</a>
+      <a href="../../index.php" class="btn btn-primary">ត្រឡប់ទៅកាន់ទំព៍រដើម</a>
       <div class="mt-3">
-        <img src="assets/img/illustrations/page-misc-error-light.png" alt="page-misc-error-light" width="500" class="img-fluid" data-app-dark-img="illustrations/page-misc-error-dark.png" data-app-light-img="illustrations/page-misc-error-light.png">
+        <img src="../../assets/img/illustrations/page-misc-error-light.png" alt="page-misc-error-light" width="500" class="img-fluid" data-app-dark-img="illustrations/page-misc-error-dark.png" data-app-light-img="illustrations/page-misc-error-light.png">
       </div>
     </div>
   </div>
-  <script src="assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="assets/vendor/libs/popper/popper.js"></script>
-  <script src="assets/vendor/js/bootstrap.js"></script>
-  <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-  <script src="assets/vendor/libs/hammer/hammer.js"></script>
-  <script src="assets/vendor/libs/i18n/i18n.js"></script>
-  <script src="assets/vendor/libs/typeahead-js/typeahead.js"></script>
-  <script src="assets/vendor/js/menu.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="../../assets/vendor/libs/popper/popper.js"></script>
+  <script src="../../assets/vendor/js/bootstrap.js"></script>
+  <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+  <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+  <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
+  <script src="../../assets/vendor/js/menu.js"></script>
+  <script src="../../assets/js/main.js"></script>
   <div id="template-customizer" class="invert-bg-white" style="visibility: visible"> <a href="javascript:void(0)" class="template-customizer-open-btn" tabindex="-1"></a>
     <div class="p-4 m-0 lh-1 border-bottom template-customizer-header position-relative py-3">
       <h4 class="template-customizer-t-panel_header mb-2">Template Customizer</h4>
@@ -94,7 +94,7 @@
               <div class="form-check custom-option custom-option-icon mb-0 checked">
                 <label class="form-check-label custom-option-content p-0" for="customRadioIconlight">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/light.svg" alt="Light" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/light.svg" alt="Light" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="customRadioIcon" class="form-check-input d-none" type="radio" value="light" id="customRadioIconlight" checked="checked">
                 </label>
@@ -105,7 +105,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="customRadioIcondark">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/dark.svg" alt="Dark" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/dark.svg" alt="Dark" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="customRadioIcon" class="form-check-input d-none" type="radio" value="dark" id="customRadioIcondark">
                 </label>
@@ -116,7 +116,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="customRadioIconsystem">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/system.svg" alt="System" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/system.svg" alt="System" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="customRadioIcon" class="form-check-input d-none" type="radio" value="system" id="customRadioIconsystem">
                 </label>
@@ -131,7 +131,7 @@
               <div class="form-check custom-option custom-option-icon mb-0 checked">
                 <label class="form-check-label custom-option-content p-0" for="themeRadiostheme-default">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/default.svg" alt="Default" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/default.svg" alt="Default" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="themeRadios" class="form-check-input d-none" type="radio" value="theme-default" id="themeRadiostheme-default" checked="checked">
                 </label>
@@ -142,7 +142,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="themeRadiostheme-bordered">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/border.svg" alt="Bordered" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/border.svg" alt="Bordered" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="themeRadios" class="form-check-input d-none" type="radio" value="theme-bordered" id="themeRadiostheme-bordered">
                 </label>
@@ -153,7 +153,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="themeRadiostheme-semi-dark">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/semi-dark.svg" alt="Semi Dark" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/semi-dark.svg" alt="Semi Dark" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="themeRadios" class="form-check-input d-none" type="radio" value="theme-semi-dark" id="themeRadiostheme-semi-dark">
                 </label>
@@ -174,7 +174,7 @@
               <div class="form-check custom-option custom-option-icon mb-0 checked">
                 <label class="form-check-label custom-option-content p-0" for="layoutsRadiosexpanded">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/expanded.svg" alt="Expanded" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/expanded.svg" alt="Expanded" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="layoutsRadios" class="form-check-input d-none" type="radio" value="expanded" id="layoutsRadiosexpanded" checked="checked">
                 </label>
@@ -185,7 +185,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="layoutsRadioscollapsed">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/collapsed.svg" alt="Collapsed" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/collapsed.svg" alt="Collapsed" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="layoutsRadios" class="form-check-input d-none" type="radio" value="collapsed" id="layoutsRadioscollapsed">
                 </label>
@@ -200,7 +200,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="navbarOptionRadiossticky">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/sticky.svg" alt="Sticky" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/sticky.svg" alt="Sticky" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="navbarOptionRadios" class="form-check-input d-none" type="radio" value="sticky" id="navbarOptionRadiossticky">
                 </label>
@@ -211,7 +211,7 @@
               <div class="form-check custom-option custom-option-icon mb-0 checked">
                 <label class="form-check-label custom-option-content p-0" for="navbarOptionRadiosstatic">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/static.svg" alt="Static" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/static.svg" alt="Static" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="navbarOptionRadios" class="form-check-input d-none" type="radio" value="static" id="navbarOptionRadiosstatic" checked="checked">
                 </label>
@@ -222,7 +222,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="navbarOptionRadioshidden">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/hidden.svg" alt="Hidden" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/hidden.svg" alt="Hidden" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="navbarOptionRadios" class="form-check-input d-none" type="radio" value="hidden" id="navbarOptionRadioshidden">
                 </label>
@@ -237,7 +237,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="contentRadioIconcompact">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/compact.svg" alt="Compact" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/compact.svg" alt="Compact" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="contentRadioIcon" class="form-check-input d-none" type="radio" value="compact" id="contentRadioIconcompact">
                 </label>
@@ -248,7 +248,7 @@
               <div class="form-check custom-option custom-option-icon mb-0 checked">
                 <label class="form-check-label custom-option-content p-0" for="contentRadioIconwide">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/wide.svg" alt="Wide" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/wide.svg" alt="Wide" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="contentRadioIcon" class="form-check-input d-none" type="radio" value="wide" id="contentRadioIconwide" checked="checked">
                 </label>
@@ -263,7 +263,7 @@
               <div class="form-check custom-option custom-option-icon mb-0 checked">
                 <label class="form-check-label custom-option-content p-0" for="directionRadioIconltr">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/ltr.svg" alt="Left to Right (En)" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/ltr.svg" alt="Left to Right (En)" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="directionRadioIcon" class="form-check-input d-none" type="radio" value="ltr" id="directionRadioIconltr" checked="checked">
                 </label>
@@ -275,7 +275,7 @@
               <div class="form-check custom-option custom-option-icon mb-0">
                 <label class="form-check-label custom-option-content p-0" for="directionRadioIconrtl">
                   <span class="custom-option-body mb-0">
-                    <img src="assets/img/customizer/rtl.svg" alt="Right to Left (Ar)" class="img-fluid scaleX-n1-rtl">
+                    <img src="../../assets/img/customizer/rtl.svg" alt="Right to Left (Ar)" class="img-fluid scaleX-n1-rtl">
                   </span>
                   <input name="directionRadioIcon" class="form-check-input d-none" type="radio" value="rtl" id="directionRadioIconrtl">
                 </label>

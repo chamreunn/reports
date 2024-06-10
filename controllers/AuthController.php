@@ -36,7 +36,7 @@ class AuthController
           if ($account) {
             if ($account['Status'] == 'locked') {
               sleep(1);
-              header('Location: ../views/account-locked.php'); // Redirect to account locked page
+              header('Location: ../views/auth/account-locked.php'); // Redirect to account locked page
               exit;
             } elseif (password_verify($password, $account['Password'])) {
               if (isset($account['authenticator_enabled']) && $account['authenticator_enabled'] == 1) {

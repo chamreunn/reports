@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
 $pageTitle = "ចូលប្រើប្រាស់ប្រព័ន្ធ";
 // session_start();
 include('../../includes/header-login-page.php');
@@ -94,7 +91,11 @@ try {
             </a>
           </div>
           <form id="formAuthentication" class="mb-3" method="POST" action="../../controllers/AuthController.php">
-            <?php if (isset($_SESSION['error'])) : ?>
+            <?php
+            if (session_status() == PHP_SESSION_NONE) {
+              session_start();
+            }
+            if (isset($_SESSION['error'])) : ?>
               <div class="alert alert-danger alert-dismissible" role="alert">
                 <?= htmlspecialchars($_SESSION['error']) ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

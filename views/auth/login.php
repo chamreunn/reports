@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 $pageTitle = "ចូលប្រើប្រាស់ប្រព័ន្ធ";
 // session_start();
 include('../../includes/header-login-page.php');
-include('../../includes/alert.php');
+// include('../../includes/alert.php');
 include('../../config/dbconn.php');
 try {
   // Retrieve existing data if available
@@ -94,8 +97,7 @@ try {
             <?php if (isset($_SESSION['error'])) : ?>
               <div class="alert alert-danger alert-dismissible" role="alert">
                 <?= htmlspecialchars($_SESSION['error']) ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>
               <?php unset($_SESSION['error']); ?> <!-- Clear the error message from session -->
             <?php endif; ?>
@@ -111,7 +113,7 @@ try {
                 <span class="text-danger fw-bold mx-1">*</span>
               </div>
               <div class="input-group input-group-merge">
-                <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                <input type="password" id="password" class="form-control" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" required />
                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
               </div>
             </div>

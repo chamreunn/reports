@@ -2,7 +2,7 @@
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
 <?php
 $pageTitle = "ចូលប្រើប្រាស់ប្រព័ន្ធ";
-session_start();
+// session_start();
 include('../../includes/header-login-page.php');
 include('../../includes/alert.php');
 include('../../config/dbconn.php');

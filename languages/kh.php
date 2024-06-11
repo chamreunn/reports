@@ -65,17 +65,11 @@ return [
   "createAccountAddress" => "អាសយដ្ឋាន",
   "createAccountSaveButton" => "រក្សាទុក",
   "createAccountCancelButton" => "បោះបង់",
-<<<<<<< HEAD
-  "Audit 1 Department" => "នាយកដ្ឋានសវនកម្មទី១",
-  "Logo System" => "រូបតំណាងប្រព័ន្ធ",
-  "Cover System" => "ផ្ទាំងតំណាងប្រព័ន្ធ",
-=======
   'General Affairs Department' => 'នាយកដ្ឋានកិច្ចការទូទៅ',
   "Audit 1 Department" => "នាយកដ្ឋានសវនកម្មទី១",
   "Audit 2 Department" => "នាយកដ្ឋានសវនកម្មទី២",
   "Logo System" => "រូបតំណាងកម្មវិធី",
   "Cover System" => "ផ្ទាំងកម្មវិធី",
->>>>>>> 612d6208acbac9bec7e3f610018cef5a52053f75
   "Success" => "ជោគជ័យ",
   "My Account" => "គណនី​របស់​ខ្ញុំ",
   "success" => "ជោគជ័យ",
@@ -92,21 +86,6 @@ return [
   'System' => 'ប្រព័ន្ធ',
   'Settings' => 'ការកំណត់',
   'Make A Request' => 'បង្កើតសំណើ',
-<<<<<<< HEAD
-  'View More' => 'មើលបន្ថែមទៀត',
-  'No recent activities found' => 'មិនមានសកម្មភាពទេ',
-  'Latest Requests' => 'សំណើចុងក្រោយគេ',
-  'Task Progress Tracker' => 'តាមដានលំហូរការងារ',
-  'Request Title' => 'ឈ្មោះសំណើ',
-  'View Progress' => 'មើលលំហូរការងារ',
-  'Current Report' => 'របាយការណ៍បច្ចុប្បន្ន',
-  'Summary' => 'សង្ខេប',
-  'Pending' => 'កំពុងរង់ចាំ',
-  'Approved' => 'បានអនុម័ត',
-  'Rejected' => 'បដិសេធ',
-  'Completed' => 'រួចរាល់',
-  'wellcome' => 'សូមស្វា​គម​ន៏',
-=======
   'Pending Requests' => 'របាយការណ៍ថ្មីៗ',
   'Approved Requests' => 'របាយការណ៍បានឯកភាព',
   'Rejected Requests' => 'របាយការណ៍បានបដិសេដ',
@@ -134,6 +113,5 @@ return [
   'Close' => 'បោះបង់',
   'Audit Reports' => 'របាយការណ៍សវនកម្ម',
   'welcome' => 'សូមស្វាគមន៍'
->>>>>>> 612d6208acbac9bec7e3f610018cef5a52053f75
   // Add more translations as needed
 ];

@@ -24,7 +24,7 @@ $stmt->execute();
 $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="col-12 d-flex align-items-center justify-content-between mb-3">
-  <h3 class="mb-0">wellcome<span class="mef2 text-primary mx-2 me-0 mb-0"><?php echo  $_SESSION['username'] ?></span></h3>
+  <h3 class="mb-0"><?php echo translate('wellcome') ?>,<span class="mef2 text-primary mx-2 me-0 mb-0"><?php echo  $_SESSION['username'] ?></span></h3>
   <div class="dropdown">
     <button class="btn btn-primary"><i class="bx bx-calendar me-2"></i><?php echo date('D-m-Y h:i A') ?></button>
   </div>
@@ -36,7 +36,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="card h-100">
       <div class="card-header border-bottom d-flex justify-content-between align-items-center mb-3">
         <h5 class="card-title mef2 mb-0"><?php echo translate('Recent Activity') ?></h5>
-        <button class="btn btn-sm btn-outline-primary mb-0">View More <i class="bx bx-chevron-right"></i></button>
+        <button class="btn btn-sm btn-outline-primary mb-0"><?php echo translate('View More') ?><i class="bx bx-chevron-right"></i></button>
       </div>
       <div class="card-body">
         <div class="list-group">
@@ -64,7 +64,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </div>
             <?php endforeach; ?>
           <?php else : ?>
-            <div class="alert alert-warning">No recent activities found.</div>
+            <div class="alert alert-warning"><?php echo translate('No recent activities found') ?>.</div>
           <?php endif; ?>
         </div>
       </div>
@@ -125,14 +125,14 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <div class="col">
     <div class="card h-100">
       <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-        <h5 class="card-title mb-0">Task Progress Tracker</h5>
+        <h5 class="card-title mb-0"><?php echo translate('Task Progress Tracker') ?></h5>
       </div>
       <div class="card-body">
         <?php if (empty($latestRequests)) : ?>
           <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
             <div class="text-center">
               <img src="../../assets/img/illustrations/empty-box.png" alt="No Requests Found" style="max-width: 15%; height: auto;" />
-              <h5 class="text-muted mt-3">No recent requests found.</h5>
+              <h5 class="text-muted mt-3"><?php echo translate('No recent activities found') ?>.</h5>
             </div>
           </div>
         <?php else : ?>
@@ -142,7 +142,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php foreach ($latestRequests as $request) : ?>
               <?php if ($request['id'] == $requestId) $requestTitle = htmlspecialchars($request['request_name_1']); ?>
             <?php endforeach; ?>
-            <h6 class="mb-1 mt-3">Request Title: <?php echo $requestTitle; ?></h6>
+            <h6 class="mb-1 mt-3"><?php echo translate('Request Title') ?><?php echo $requestTitle; ?></h6>
           <?php endif; ?>
           <!-- Progress Bar -->
           <div class="progress mt-3 mb-3">
@@ -157,14 +157,14 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
           </div>
           <!-- Latest Requests Section -->
           <div class="mt-4">
-            <h5 class="card-title mb-3">Latest Requests</h5>
+            <h5 class="card-title mb-3"><?php echo translate('Latest Requests') ?></h5>
             <ul class="list-group">
               <?php foreach ($latestRequests as $request) : ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   <?php echo htmlspecialchars($request['request_name_1']); ?>
                   <span class="badge <?php echo $request['status'] == 'completed' ? 'bg-label-primary' : ($request['status'] == 'approved' ? 'bg-success' : ($request['status'] == 'rejected' ? 'bg-danger' : 'bg-warning')); ?>"><?php echo htmlspecialchars($request['status']); ?></span>
                   <!-- Link to view progress for each request ID -->
-                  <a href="?id=<?php echo $request['id']; ?>">View Progress</a>
+                  <a href="?id=<?php echo $request['id']; ?>"><?php echo translate('View Progress') ?></a>
                 </li>
               <?php endforeach; ?>
             </ul>
@@ -223,7 +223,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="card h-100">
       <div class="card-header border-bottom d-flex justify-content-between align-items-center">
         <div>
-          <h5 class="card-title mb-0">Current Report</h5>
+          <h5 class="card-title mb-0"><?php echo translate('Current Report') ?></h5>
         </div>
         <!-- Date Filter Dropdown -->
         <form id="dateFilterForm" method="GET" class="d-flex align-items-center">
@@ -265,7 +265,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
           </div>
         <?php else : ?>
-          <p class="m-3">No recent requests found.</p>
+          <p class="m-3"><?php echo translate('No recent activities found') ?>.</p>
         <?php endif; ?>
       </div>
     </div>
@@ -332,7 +332,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="card-header border-bottom mb-3">
         <!-- Month Selector Dropdown and Title -->
         <form id="monthFilterForm" method="GET" class="d-flex justify-content-between align-items-center">
-          <h5 class="card-title mb-0">Summary</h5>
+          <h5 class="card-title mb-0"><?php echo translate('Summary') ?></h5>
           <div class="btn-group btn-group-sm" role="group" aria-label="Month Navigation">
             <a href="?month=<?= $selectedMonth ?>&action=prev" class="btn btn-outline-secondary"><i class="bx bx-chevron-left"></i></a>
             <span class="btn btn-outline-primary">
@@ -357,23 +357,23 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="col">
               <div class="d-flex align-items-center mb-2">
                 <span class="badge badge-dot bg-warning"></span>
-                <div class="ms-2">Pending</div>
+                <div class="ms-2"><?php echo translate('Pending') ?></div>
                 <div class="ms-auto"><?= $statusCounts['pending'] ?></div>
               </div>
               <div class="d-flex align-items-center mb-2">
                 <span class="badge badge-dot bg-success"></span>
-                <div class="ms-2">Approved</div>
+                <div class="ms-2"><?php echo translate('Approved') ?></div>
                 <div class="ms-auto"><?= $statusCounts['approved'] ?></div>
               </div>
               <div class="d-flex align-items-center mb-2">
                 <span class="badge badge-dot bg-danger"></span>
-                <div class="ms-2">Rejected</div>
+                <div class="ms-2"><?php echo translate('Rejected') ?></div>
                 <div class="ms-auto"><?= $statusCounts['rejected'] ?></div>
               </div>
               <div class="d-flex align-items-center mb-0">
                 <span class="badge badge-dot bg-primary"></span>
-                <div class="ms-2">Completed</div>
-                <div class="ms-auto"><?= $statusCounts['completed'] ?></div>
+                <div class="ms-2"><?php echo translate('Summary') ?></div>
+                <div class="ms-auto"><?= $statusCounts['Completed'] ?></div>
               </div>
             </div>
           </div>

@@ -13,7 +13,7 @@ include('../../includes/translate.php');
 $userId = $_SESSION['userid'];
 $sql = "SELECT d.HeadOfUnit
         FROM tbldepartments AS d
-        JOIN tbluser AS u ON u.RoleId = d.id
+        JOIN tbluser AS u ON u.Department = d.id
         WHERE u.id = :userid";
 
 // Prepare the query
@@ -25,12 +25,17 @@ $query->execute();
 
 // Fetch the result
 $admindepartment = $query->fetch(PDO::FETCH_ASSOC);
+
+// Initialize $headOfUnit variable
+$headOfUnit = "";
+
 // Display the HeadOfUnit
 if ($admindepartment) {
   $headOfUnit = $admindepartment['HeadOfUnit'];
 } else {
   echo "No Head of Unit found for this user.";
 }
+
 
 $pageTitle = "សំណើបង្កើតរបាយការណ៍";
 $sidebar = "audits";

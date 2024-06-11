@@ -10,8 +10,6 @@ if (!isset($_SESSION['userid'])) {
   header('Location: ../../index.php');
   exit();
 }
-
-
 require '../../vendor/autoload.php';
 
 // Initialize Google Authenticator
@@ -446,8 +444,6 @@ if ($userData) {
     </div>
     <!-- end-user-security -->
   </div>
-
-
   <!-- modal QR-->
   <div class="modal fade" id="twoFactorAuthOne" tabindex="-1" aria-labelledby="twoFactorAuthOneLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -527,7 +523,6 @@ if ($userData) {
   </script>
 <?php
 } else {
-
   // User data not found
   echo "<div class='text-center'>User not found.</div>";
 }

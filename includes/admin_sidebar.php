@@ -58,17 +58,9 @@ if (empty($activePage)) {
       <li class="menu-item <?php echo ($activePage === 'dashboard.php') ? 'active' : ''; ?>">
         <a href="dashboard.php" class="menu-link">
           <i class="menu-icon tf-icons bx bxs-dashboard"></i>
-          <div data-i18n="Dashboard"><?php echo translate('Dashboard'); ?></div>
+          <div data-i18n="Dashboard"><?php echo translate('Audit Reports'); ?></div>
         </a>
       </li>
-      <?php foreach ($menuItems as $item) : ?>
-        <li class="menu-item <?php echo ($item['NavigationUrl'] === $activePage) ? 'active' : ''; ?>">
-          <a href="<?php echo $item['NavigationUrl']; ?>" class="menu-link">
-            <i class="menu-icon tf-icons bx <?php echo $item['IconClass']; ?>"></i>
-            <div data-i18n="<?php echo $item['EngName']; ?>"><?php echo translate($item['PermissionName']); ?></div>
-          </a>
-        </li>
-      <?php endforeach; ?>
     </ul>
   </div>
 </aside>

@@ -123,7 +123,11 @@ return [
   'Approved' => 'បានអនុម័ត',
   'Rejected' => 'បានបដិសេធ',
   'Completed' => 'បានបញ្ចប់',
-  'Request Title' => 'ឈ្មោះសំណើ'
+  'Request Title' => 'ឈ្មោះសំណើ',
+  'Leave Taken' => 'បានដាក់ច្បាប់',
+  'Leave Approved' => 'ច្បាប់បានអនុម័ត',
+  'Leave Rejected' => 'ច្បាប់បានបដិសេធ',
+  'Leave This Week' => 'ច្បាប់សប្តាហ៍នេះ',
 
   // Add more translations as needed
 ];

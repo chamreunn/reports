@@ -112,6 +112,18 @@ return [
   'Attachments:' => 'ឯកសារភ្ជាប់',
   'Close' => 'បោះបង់',
   'Audit Reports' => 'របាយការណ៍សវនកម្ម',
-  'welcome' => 'សូមស្វាគមន៍'
+  'welcome' => 'សូមស្វាគមន៍',
+  'No recent activities found' => 'មិនបានរកឃើញសកម្មភាពទេ',
+  'Task Progress Tracker' => 'តាមដានលំហូរការងារ',
+  'Latest Requests' => 'សំណើចុងក្រោយ',
+  'View Progress' => 'មើលលំហូរការងារ',
+  'Current Report' => 'របាយការណ៍បច្ចុប្បន្ន' ,
+  'Summary' => 'សង្ខេប',
+  'Pending' => 'កំពុងរង់ចាំ',
+  'Approved' => 'បានអនុម័ត',
+  'Rejected' => 'បានបដិសេធ',
+  'Completed' => 'បានបញ្ចប់',
+  'Request Title' => 'ឈ្មោះសំណើ'
+
   // Add more translations as needed
 ];

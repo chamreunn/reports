@@ -24,7 +24,7 @@ $stmt->execute();
 $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <div class="col-12 d-flex align-items-center justify-content-between mb-3">
-  <h3 class="mb-0">wellcome<span class="mef2 text-primary mx-2 me-0 mb-0"><?php echo  $_SESSION['username'] ?></span></h3>
+  <h3 class="mb-0"><?php echo translate('welcome')?>,<span class="mef2 text-primary mx-2 me-0 mb-0"><?php echo  $_SESSION['username'] ?></span></h3>
   <div class="dropdown">
     <button class="btn btn-primary"><i class="bx bx-calendar me-2"></i><?php echo date('D-m-Y h:i A') ?></button>
   </div>
@@ -372,7 +372,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </div>
               <div class="d-flex align-items-center mb-0">
                 <span class="badge badge-dot bg-primary"></span>
-                <div class="ms-2"><?php echo translate('Summary') ?></div>
+                <div class="ms-2"><?php echo translate('Completed') ?></div>
                 <div class="ms-auto"><?= $statusCounts['Completed'] ?></div>
               </div>
             </div>

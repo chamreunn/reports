@@ -47,10 +47,7 @@ $insertedData = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="card-body">
       <div class="col-12 mb-4">
         <div class="row mb-3 align-items-center">
-          <div class="col-12 col-lg-6 mb-3 mb-lg-0">
-            <h3 class="khmer-font">Report Details</h3>
-          </div>
-          <div class="col-12 col-lg-6 text-lg-end">
+          <div class="col-12 col-lg-12 text-lg-end">
             <a href="edit2.php?id=<?php echo $getid; ?>&regulator=<?php echo $getregulator; ?>" class="btn btn-outline-info custom-button">
               <i class="bx bx-edit-alt me-2 mx-0"></i> Edit
             </a>

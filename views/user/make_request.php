@@ -54,7 +54,7 @@ ob_start();
   <div class="col-md-12">
     <div class="card">
       <div class="card-header border-bottom mb-3">
-        <h5 class="card-title mb-0">Create Report Request</h5>
+        <h5 class="card-title mb-0">បង្កើតសំណើ</h5>
       </div>
       <div class="card-body">
         <form onsubmit="onsubmitForm()" method="POST" enctype="multipart/form-data">
@@ -65,24 +65,28 @@ ob_start();
           <input type="hidden" name="regulator" value="<?php echo htmlentities($regulator); ?>">
 
           <div class="mb-3">
-            <label for="requestName" class="form-label">Request Name: <span class="text-danger">*</span></label>
+            <label for="requestName" class="form-label">ឈ្មោះសំណើ: <span class="text-danger">*</span></label>
             <input type="text" class="form-control" id="requestName" name="request_name" value="សេចក្តីព្រាងរបាយការណ៍សវនកម្ម" required>
           </div>
 
-          <div class="mb-3"><?php echo $headOfUnit ?>
-            <label for="description" class="form-label">Description: <span class="text-danger">*</span></label>
-            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+          <div class="mb-3">
+            <label for="description" class="form-label">មតិសំណើ: <span class="text-danger">*</span></label>
+            <textarea class="form-control" id="description" placeholder="មតិសំណើ" name="description" rows="3" required></textarea>
           </div>
-          <label for="requestName" class="form-label">Attactments: <span class="text-danger">*</span></label>
+          <label for="requestName" class="form-label">ឯកសារភ្ជាប់: <span class="text-danger">*</span></label>
           <div class="mb-3 custom-dropzone" id="dropzone">
             <label for="fileInput" class="form-label dropzone">Drag and drop files here or click to upload:</label>
             <input type="file" class="form-control" id="fileInput" name="files[]" multiple accept=".pdf,.doc,.docx" style="display: none;">
             <small id="fileHelp" class="form-text text-muted">You can select files one by one, and they will be added to the list.</small>
             <div id="fileList" class="file-list mt-2"></div>
           </div>
+          <div class="mb-3">
+            <label for="requestName" class="form-label">Link (តំណភ្ជាប់ឯកសារ)</label>
+            <input type="link" class="form-control" id="requestName" name="link1" placeholder="https:\\example\example.pdf">
+          </div>
       </div>
-      <div class="card-footer border-top">
-        <button type="submit" class="btn btn-primary">Submit Request</button>
+      <div class="card-footer border-top text-end">
+        <button type="submit" class="btn btn-primary"><i class="bx bx-send me-2"></i>ដាក់សំណើ</button>
       </div>
       </form>
     </div>

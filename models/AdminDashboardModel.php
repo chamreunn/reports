@@ -16,7 +16,7 @@ $countStmt->execute();
 $counts = $countStmt->fetch(PDO::FETCH_ASSOC);
 
 // Fetch recent pending requests
-$recentPendingStmt = $dbh->prepare("SELECT r.id AS request_id, u.Honorific, u.FirstName, u.LastName, u.Email, u.Profile, r.status, r.request_name_1, r.admin_comment
+$recentPendingStmt = $dbh->prepare("SELECT r.id AS request_id, link_1, link_2, link_3, u.Honorific, u.FirstName, u.LastName, u.Email, u.Profile, r.status, r.request_name_1, r.admin_comment
                                     FROM tblrequest r
                                     INNER JOIN tbluser u ON r.user_id = u.id
                                     WHERE r.status = 'pending'
@@ -26,7 +26,7 @@ $recentPendingStmt->execute();
 $pendingRequests = $recentPendingStmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch recent approved requests
-$recentApprovedStmt = $dbh->prepare("SELECT r.id AS request_id, u.Honorific, u.FirstName, u.LastName, u.Email, u.Profile, r.status, r.request_name_1, r.admin_comment
+$recentApprovedStmt = $dbh->prepare("SELECT r.id AS request_id, link_1, link_2, link_3, u.Honorific, u.FirstName, u.LastName, u.Email, u.Profile, r.status, r.request_name_1, r.admin_comment
                                      FROM tblrequest r
                                      INNER JOIN tbluser u ON r.user_id = u.id
                                      WHERE r.status = 'approved'
@@ -36,7 +36,7 @@ $recentApprovedStmt->execute();
 $approvedRequests = $recentApprovedStmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch recent rejected requests
-$recentRejectedStmt = $dbh->prepare("SELECT r.id AS request_id, u.Honorific, u.FirstName, u.LastName, u.Email, u.Profile, r.status, r.request_name_1, r.admin_comment
+$recentRejectedStmt = $dbh->prepare("SELECT r.id AS request_id, link_1, link_2, link_3, u.Honorific, u.FirstName, u.LastName, u.Email, u.Profile, r.status, r.request_name_1, r.admin_comment
                                      FROM tblrequest r
                                      INNER JOIN tbluser u ON r.user_id = u.id
                                      WHERE r.status = 'rejected'

@@ -642,6 +642,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } elseif ($loginType == 'edit_report') {
     $reportId = $_POST['reportid'];
     $updatedData = $_POST['updatedData'];
+    
 
     try {
       // Prepare the update statement
@@ -936,6 +937,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } elseif ($loginType == 'request_report1') {
     $userId = $_POST['userid'];
     $shortname = $_POST['shortname'];
+    $link = $_POST['link1'];
     $regulator = $_POST['regulator'];
     $requestName = $_POST['request_name'];
     $description = $_POST['description'];
@@ -944,14 +946,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
       // Insert request into the tblrequest table
-      $sql = "INSERT INTO tblrequest (user_id, shortname, Regulator, request_name_1, description_1, step, status, admin_id)
-                VALUES (:user_id, :shortname, :regulator, :request_name, :description, :step, 'pending', :admin_id)";
+      $sql = "INSERT INTO tblrequest (user_id, shortname, Regulator, request_name_1, description_1,link_1, step, status, admin_id)
+                VALUES (:user_id, :shortname, :regulator, :request_name, :description, :link, :step, 'pending', :admin_id)";
       $query = $dbh->prepare($sql);
       $query->bindParam(':user_id', $userId);
       $query->bindParam(':shortname', $shortname);
       $query->bindParam(':regulator', $regulator);
       $query->bindParam(':request_name', $requestName);
       $query->bindParam(':description', $description);
+      $query->bindParam(':link', $link);
       $query->bindParam(':step', $step);
       $query->bindParam(':admin_id', $adminId); // Bind admin ID parameter
       $query->execute();

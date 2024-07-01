@@ -5,11 +5,11 @@ require_once '../vendor/autoload.php';
 
 // Import the PhpWord namespace
 use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\SimpleType\Jc; // Add this line
+use PhpOffice\PhpWord\SimpleType\Jc;
 
 // Get the ID parameter from the URL
 $getid = $_GET['id'];
-$getregulator = $_GET['regulator']; // Corrected variable name
+$getregulator = $_GET['regulator'];
 
 // Include necessary files and establish database connection
 include('../config/dbconn.php');
@@ -36,11 +36,6 @@ $phpWord->setDefaultParagraphStyle(
     'spacing' => 0,
   )
 );
-
-// // Define styles for headlines and data
-// $headlineFontStyle = array('name' => 'Khmer MEF2', 'size' => 12, 'color' => '000000', 'bold' => true);
-// $dataFontStyle = array('name' => 'Khmer MEF1', 'size' => 11, 'color' => '000000');
-// $paragraphStyle = array('alignment' => Jc::BOTH);
 
 // Define section style for the cover page
 $coverPageStyle = array(
@@ -96,7 +91,7 @@ $textRun->addText('លេខ:......................អ.ស.ផ.', array('name' =
 // Add additional text in the middle of the cover page
 $additionalTextLines = [
   'របាយការណ៍សវនកម្ម',
-  'នៅ' . $getregulator, // Dynamically display the regulator
+  'នៅ ' . $getregulator, // Dynamically display the regulator
   'នៃអាជ្ញាធរសេវាហិរញ្ញវត្ថុមិនមែនធនាគារ'
 ];
 
@@ -112,6 +107,7 @@ foreach ($additionalTextLines as $index => $line) {
     $additionalTextRun->addText("\n", array(), array('spaceAfter' => 0)); // Remove space after text
   }
 }
+
 // Function to convert numbers to Khmer numerals
 function convertToKhmerNumeric($number)
 {
@@ -143,7 +139,7 @@ function convertToKhmerNumeric($number)
 $currentYearKhmer = convertToKhmerNumeric(date('Y'));
 
 // Add additional text at the bottom of the cover page with Khmer numeric
-$additionalText = "សម្រាប់ឆ្នាំ" . $currentYearKhmer;
+$additionalText = "សម្រាប់ឆ្នាំ " . $currentYearKhmer;
 
 // Add additional text to the cover page
 $additionalTextRun = $coverSection->addTextRun(array('alignment' => Jc::CENTER, 'marginTop' => 720)); // Adjust marginTop as needed
@@ -153,13 +149,14 @@ for ($i = 0; $i < 15; $i++) {
 }
 // Add the additional text with Khmer numeric
 $additionalTextRun->addText($additionalText, array('name' => 'Khmer MEF2', 'size' => 22, 'color' => '#2F5496'), $paragraphStyle);
-//end of cover page
+// End of cover page
+
 // Add a section to the document for the TOC
 $tocSection = $phpWord->addSection();
 // Add a Table of Contents (TOC)
 $tocSection->addText('មាតិកា', array('name' => 'Khmer MEF2', 'size' => 12, 'bold' => true), array('alignment' => Jc::CENTER));
 $tocSection->addTOC(array('name' => 'Khmer MEF2', 'size' => 12));
-// Add a section to the document for the content
+
 // Add a section to the document for the content
 $contentSection = $phpWord->addSection($sectionStyle);
 
@@ -179,7 +176,7 @@ if ($insertedData) {
 
     // Add the corresponding data, if it exists, with Khmer MEF1 font and justified alignment
     if ($cleanData) {
-      $contentSection->addText($cleanData, array('name' => 'Khmer MEF1', 'size' => 12), $contentParagraphStyle);
+      $contentSection->addText($cleanData, array('name' => 'Khmer MEF1', 'size' => 12), array('alignment' => Jc::BOTH));
     }
   }
 }
@@ -191,3 +188,5 @@ header('Content-Disposition: attachment;filename="របាយការណ៍ស
 // Save the document to output
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
 $objWriter->save('php://output');
+exit();
+?>

@@ -157,7 +157,7 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
               </ul>
             </li>
             <li class="dropdown-menu-footer border-top p-3">
-              <button class="btn btn-primary text-uppercase w-100">View All Notifications</button>
+              <a href="view_notification?action='notification_all'" class="btn btn-primary text-uppercase w-100"><?= translate('View All Notifications')?></a>
             </li>
           </ul>
         </li>
@@ -311,7 +311,7 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="pages-account-settings-account.html">
+              <a class="dropdown-item" href="all-users-detail.php?uid=<?php echo $_SESSION['userid']; ?>">
                 <div class="d-flex">
                   <div class="flex-shrink-0 me-3">
                     <div class="avatar avatar-online">
@@ -335,7 +335,7 @@ $notificationCount = $stmtNotifications->fetch(PDO::FETCH_ASSOC)['notification_c
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="pages-account-settings-account.php">
+              <a class="dropdown-item disabled" href="pages-account-settings-account.php">
                 <i class="bx bx-cog me-2"></i>
                 <span class="align-middle"><?php echo translate('Settings'); ?></span>
               </a>

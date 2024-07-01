@@ -58,6 +58,12 @@ if (empty($activePage)) {
       <li class="menu-item <?php echo ($activePage === 'dashboard.php') ? 'active' : ''; ?>">
         <a href="dashboard.php" class="menu-link">
           <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+          <div data-i18n="Dashboard"><?php echo translate('Dashboard'); ?></div>
+        </a>
+      </li>
+      <li class="menu-item <?php echo ($activePage === "view_more.php") ? 'active' : ''; ?>">
+        <a href="view_more.php?action=<?php echo translate('Audit Reports'); ?>" class="menu-link">
+          <i class="menu-icon tf-icons bx bxs-dock-top"></i>
           <div data-i18n="Dashboard"><?php echo translate('Audit Reports'); ?></div>
         </a>
       </li>

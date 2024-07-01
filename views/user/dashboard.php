@@ -33,7 +33,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-2 g-4">
   <!-- Activity Card -->
   <div class="col">
-    <div class="card h-100">
+    <div class="card border-2 h-100">
       <div class="card-header border-bottom d-flex justify-content-between align-items-center mb-3">
         <h5 class="card-title mef2 mb-0"><?php echo translate('Recent Activity') ?></h5>
         <button class="btn btn-sm btn-outline-primary mb-0"><?php echo translate('View More') ?><i class="bx bx-chevron-right"></i></button>
@@ -123,7 +123,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
   ?>
   <div class="col">
-    <div class="card h-100">
+    <div class="card border-2 h-100">
       <div class="card-header border-bottom d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0"><?php echo translate('Task Progress Tracker') ?></h5>
       </div>
@@ -220,7 +220,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
   ?>
 
   <div class="col">
-    <div class="card h-100">
+    <div class="card border-2 h-100">
       <div class="card-header border-bottom d-flex justify-content-between align-items-center">
         <div>
           <h5 class="card-title mb-0"><?php echo translate('Current Report') ?></h5>
@@ -328,7 +328,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
   ?>
   <!-- Summary Card -->
   <div class="col">
-    <div class="card h-100">
+    <div class="card border-2 h-100">
       <div class="card-header border-bottom mb-3">
         <!-- Month Selector Dropdown and Title -->
         <form id="monthFilterForm" method="GET" class="d-flex justify-content-between align-items-center">
@@ -373,7 +373,7 @@ $userActivities = $stmt->fetchAll(PDO::FETCH_ASSOC);
               <div class="d-flex align-items-center mb-0">
                 <span class="badge badge-dot bg-primary"></span>
                 <div class="ms-2"><?php echo translate('Completed') ?></div>
-                <div class="ms-auto"><?= $statusCounts['Completed'] ?></div>
+                <div class="ms-auto"><?= $statusCounts['completed'] ?></div>
               </div>
             </div>
           </div>

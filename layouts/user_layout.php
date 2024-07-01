@@ -9,7 +9,7 @@ if (!isset($_SESSION['userid'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
+<html lang="km" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="horizontal-menu-template">
 
 <head>
   <title><?php echo isset($pageTitle) ? $pageTitle : 'Dashboard'; ?></title>
@@ -24,7 +24,7 @@ include('../../includes/alert.php');
 
 <body>
   <!-- Layout wrapper -->
-  <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu">
+  <div class="layout-wrapper layout-navbar-full layout-horizontal layout-without-menu animate__animated animate__fadeIn">
     <div class="layout-container">
       <!-- Navbar -->
       <?php include('../../includes/user_navbar.php'); ?>

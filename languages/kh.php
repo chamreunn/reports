@@ -117,7 +117,7 @@ return [
   'Task Progress Tracker' => 'តាមដានលំហូរការងារ',
   'Latest Requests' => 'សំណើចុងក្រោយ',
   'View Progress' => 'មើលលំហូរការងារ',
-  'Current Report' => 'របាយការណ៍បច្ចុប្បន្ន' ,
+  'Current Report' => 'របាយការណ៍បច្ចុប្បន្ន',
   'Summary' => 'សង្ខេប',
   'Pending' => 'កំពុងរង់ចាំ',
   'Approved' => 'បានអនុម័ត',
@@ -128,6 +128,12 @@ return [
   'Leave Approved' => 'ច្បាប់បានអនុម័ត',
   'Leave Rejected' => 'ច្បាប់បានបដិសេធ',
   'Leave This Week' => 'ច្បាប់សប្តាហ៍នេះ',
-
+  'Go back to Dashboard' => 'ត្រឡប់ទៅកាន់ទំព័រដើម',
+  'Post Comment' => 'បង្កើតមតិយោបល់',
+  'Add your comment' => 'ផ្តល់មតិយោបល់',
+  'No Comment(s) Yet' => 'មិនទាន់មានមតិយោបល់នៅឡើយ',
+  'Comments' => 'មតិយោបល់',
+  'Delete Comment' => 'លុបមតិ',
+  'Edit Comment' => 'កែប្រែមតិ'
   // Add more translations as needed
 ];
